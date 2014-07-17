@@ -1,0 +1,55 @@
+﻿@using MVCappLabs.Web.Controllers
+@model MVCappLabs.Web.Models.AppLabs.FloorInputs
+@{
+    ViewBag.Title = "FlooringCalculator";
+}
+
+<h1>Flooring Calculator</h1>
+<div class ="row">
+    <div class ="col-sm-12">How much floor do you need?</div>
+    <br/>
+
+</div>
+<div class ="row">
+    <div class ="col-sm-6">
+        @using (Html.BeginForm("FlooringCalculator", "AppLabs", FormMethod.Post, new {role = "form"}))
+        {
+            @Html.ValidationSummary()
+            <div class ="form-group">
+                <label for ="Width">Width</label>
+                @Html.TextBoxFor(m=>m.Width, new{@class = "form-control", placeholder = "Enter width of room"})
+            </div>
+            <div class ="form-group">
+                <label for ="Length">Length</label>
+                @Html.TextBoxFor(m=>m.Length, new{@class = "form-control", placeholder = "Enter length of room"})
+            </div>
+            <div class ="form-group">
+                <label for ="CostPerUnit">Cost per Unit</label>
+                @Html.TextBoxFor(m=>m.CostPerUnit, new{@class = "form-control", placeholder = "Enter cost per square foot"})
+            </div>
+            
+            <div class ="form-group"> @*want to put in javascript/ajax to hide these until submit*@
+                <label for ="Area">Area:</label>
+                @Html.DisplayFor(m=>m.Area) 
+            </div>
+            <div class ="form-group">
+                <label for ="FlooringCost">Flooring Cost:</label>
+                @Html.DisplayFor(m=>m.FlooringCost)
+            </div>
+            <div class ="form-group">
+                <label for ="LaborCost">Cost of Labor:</label>
+                @Html.DisplayFor(m=>m.LaborCost)
+            </div>
+            
+            <div class ="form-group">
+                <label for ="TotalCostEstimate">Total Estimate:</label>
+                @Html.DisplayFor(m=>m.TotalCostEstimate)
+            </div>
+            <div class="col-sm-9">
+                <div class="col-sm-6"><button type="submit" class="btn btn-default">Submit</button></div>
+                <div class ="col-sm-6"><h5>@Html.ActionLink("Back to App Labs", "Index")</h5></div>
+            </div>
+          
+        }
+    </div>
+</div>

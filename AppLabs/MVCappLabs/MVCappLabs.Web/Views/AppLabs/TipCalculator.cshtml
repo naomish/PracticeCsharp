@@ -1,0 +1,30 @@
+﻿@model MVCappLabs.Web.Models.AppLabs.TipCalculatorRequest
+@{
+    ViewBag.Title = "TipCalculator";
+    }
+
+<h1 align="left">Calculate Your Tip</h1> @*should I do a partial view that has just a menu of Applabs?*@
+<div class="row">
+    <div class="col-sm-12">
+        <p>Please enter your meal information</p>
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-1">
+        @using (Html.BeginForm("TipCalculator", "AppLabs", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label for="MealCost">Meal Amount</label>
+                @Html.TextBoxFor(m => m.MealCost, new { @class = "form-control", placeholder = "Enter meal amount" })
+            </div>
+            <div class="form-group">
+                <label for="TipPercent">Tip Percent</label>
+                @Html.TextBoxFor(m => m.TipPercent, new { @class = "form-control", placeholder = "Enter tip percent" })
+            </div>
+            
+            <button type="submit" class="btn btn-default">Submit</button>
+        }
+    </div>
+</div>

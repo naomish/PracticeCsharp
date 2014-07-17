@@ -1,0 +1,45 @@
+﻿@model MVCappLabs.Web.Views.AppLabs.FibonacciTool
+
+@{
+    ViewBag.Title = "Fibonacci";
+}
+
+<h2>Fibonacci</h2>
+
+<div class="row">
+    <div class="col-sm-12">Enter a number and I'll return that many members of the Fibonacci Series.</div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-sm-6">
+        @using (Html.BeginForm("Fibonacci", "AppLabs", FormMethod.Post, new {role = "form"}))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label for ="NumberOfFibs">Number of Elements to figure:</label>
+                @Html.TextBoxFor(m=>m.NumberOfFibs, new {@class ="form-control", placeholder ="Enter a number between 1 and 93"})
+            </div>
+            <div class="row">
+             
+                <ol>
+                    @foreach (var item in @Model.FibonacciList)
+                    {
+
+
+                        <li>@item</li>
+
+                    }
+                </ol>
+</div>
+            
+             <div class="col-sm-9">
+                <div class="col-sm-6"><button type="submit" id="fibButton" class="btn btn-default" onclick="unhide(this,'count')" value="unhide">Submit</button></div>
+                <div class="col-sm-6"><h5>@Html.ActionLink("Back to App Labs", "Index")</h5></div>
+            </div>
+            
+        }
+         </div>
+</div>
+

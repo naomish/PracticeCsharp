@@ -1,0 +1,71 @@
+﻿@model MVCappLabs.Web.Models.AppLabs.CharacterCountTool
+
+@{
+    ViewBag.Title = "CharacterCount";
+}
+
+<h2>Character Count</h2>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-5">Enter in a word or phrase, I'll count the characters for you</div>
+
+    </div>
+    <br />
+
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        @using (Html.BeginForm("CharacterCount", "AppLabs", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                @*@Html.ValidationMessageFor(m=>m.TextInput)*@
+                <label for="Text">Type Here:</label>
+                @Html.TextBoxFor(m => m.TextInput, new { @class = "form-control", placeholder = "Enter your text" })
+            </div>
+
+            <div class="form-group">
+                <label for="TotalChars">Keyboard Strokes:</label>
+                @Html.DisplayFor(m => m.TotalCharacters)
+            </div>
+
+            <div class="form-group">
+                <label for="Consonants">Consonants:</label>
+                @Html.DisplayFor(m => m.Consonants) <br />
+                @Html.DisplayFor(m => m.ConsonantList)
+            </div>
+
+            <div class="form-group">
+                <label for="Vowels">Vowels:</label>
+                @Html.DisplayFor(m => m.Vowels) <br />
+                @Html.DisplayFor(m => m.VowelList)
+            </div>
+
+            <div class="form-group">
+                <label for="Ys">Ys(you decide!):</label>
+                @Html.DisplayFor(m => m.Ys) <br />
+
+            </div>
+            <div class="form-group">
+                <label for="Spaces">Spaces:</label>
+                @Html.DisplayFor(m => m.Spaces) <br />
+            </div>
+
+            <div class="form-group">
+                <label for="Punctuation">Everything Else:</label>
+                @Html.DisplayFor(m => m.Punctuation) <br />
+                @Html.DisplayFor(m => m.NonLetters)
+            </div>
+
+            <div class="col-sm-12" style="margin-top:25px">
+                <div class="col-sm-6" align="center"><button type="submit" class="btn btn-primary">Submit</button></div>
+                <div class="col-sm-4"><h5>@Html.ActionLink("Back to App Labs", "Index")</h5></div>
+            </div>
+        }
+    </div>
+</div>
+
+

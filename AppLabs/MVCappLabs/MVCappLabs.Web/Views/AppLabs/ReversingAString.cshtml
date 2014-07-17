@@ -1,0 +1,32 @@
+﻿@model MVCappLabs.Web.Models.AppLabs.TwoWayString
+@{
+    ViewBag.Title = "ReversingAString";}
+
+<h1>BackWords</h1>
+<div class="row">
+    <div class="col-sm-12">Enter a word, phrase or anything - I'll reverse it.</div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-6">
+        @using (Html.BeginForm("ReversingAString", "AppLabs", FormMethod.Post, new {role = "form"}))
+        {
+            @Html.ValidationSummary()
+            <div class ="form-group">
+                <label for = "Text">Type Here:</label>
+                @Html.TextBoxFor(m=>m.Forward, new{@class = "form-control", placeholder = "Enter your text"})
+            </div>
+            <div class ="form-group">
+                <label for ="Reversed">Reversed:</label>
+                @Html.DisplayFor(m=>m.Reversed)
+            </div>
+            
+             <div class="col-sm-9">
+                <div class="col-sm-6"><button type="submit" class="btn btn-default">Submit</button></div>
+                <div class ="col-sm-6"><h5>@Html.ActionLink("Back to App Labs", "Index")</h5></div>
+            </div>
+        }
+</div>
+</div>

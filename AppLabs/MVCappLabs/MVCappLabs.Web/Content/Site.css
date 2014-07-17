@@ -1,0 +1,39 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+.col-8{
+width: 12.5%;
+}
+
+/* Styles for validation helpers*/
+
+.field-validation-error{color:#f00}
+
+.field-validation-valid{display:none}
+
+.input-validation-error{ border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors{ font-weight: bold;
+                            color:#ff0000
+}
+
+.validation-summary-valid{ display: none;}
+
+.unhidden {
+    display:block
+}
+
+/*INDEX Page*/
+#level1 {display:none}
+#blackLink{color:black}
+#level2{background-color: powderblue}
+#level3 {display:none}
+#level4 {display:none}
+#level5 {display:none}
+#level6 {display:none}
+#level7 {display:none}
+#level8 {display:none}
+

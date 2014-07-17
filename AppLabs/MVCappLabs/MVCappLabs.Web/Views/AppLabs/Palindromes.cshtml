@@ -1,0 +1,36 @@
+﻿@model MVCappLabs.Web.Models.AppLabs.PalindromeTool
+
+@{
+    ViewBag.Title = "Palindromes";
+}
+
+<h2>Palindromes</h2>
+<div class="row">
+    <div class="col-sm-12">Enter a word or phrase - I'll let you know if it is Palindromic!</div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-sm-6">
+        @using (Html.BeginForm("Palindromes", "AppLabs", FormMethod.Post, new {role = "form"}))
+        {
+            @Html.ValidationSummary()
+            <div class ="form-group">
+                <label for ="Text">Type Here:</label>
+                @Html.TextBoxFor(m=>m.RawString, new{@class="form-control", placeholder="Enter your text"})
+            </div>
+
+            if (Model.IsPalindrome==1)
+            {
+                <p>Yes! That's a palindrome.</p>
+                
+            }
+            else if(Model.IsPalindrome==2)
+            {
+  <p>Nope, not a palindrome. It's not the same backwards and forwards.</p>
+            }
+          
+        }
+</div>
+</div>
+

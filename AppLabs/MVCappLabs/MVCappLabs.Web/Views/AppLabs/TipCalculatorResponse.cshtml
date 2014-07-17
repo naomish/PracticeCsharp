@@ -1,0 +1,48 @@
+﻿@model MVCappLabs.Models.Level1.TipCalculationResponse
+@{
+    ViewBag.Title = "TipCalculationResponse";
+}
+
+<h2>Tip Calculator Result</h2>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <p>
+            For your meal of @Model.MealCost.ToString("C") with a tip of @Model.TipPercent.ToString("P") the tip amount is @Model.TipAmount.ToString("C") for a total cost of @Model.TotalCost.ToString("C")
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @using (Html.BeginForm("TipCalculator", "AppLabs", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label for="MealCost">Meal Amount</label>
+                @Html.TextBoxFor(m => m.MealCost, new { @class = "form-control", placeholder = "Enter meal amount" })
+            </div>
+            <div class="form-group">
+                <label for="TipPercent">Tip Percent</label>
+                @Html.TextBoxFor(m => m.TipPercent, new { @class = "form-control", placeholder = "Enter tip percent" })
+            </div>
+            <div class="form-group">
+                <label for="TipAmount">Tip Amount</label>
+                @Html.TextBoxFor(m => m.TipAmount, new { @class = "form-control", placeholder = "Enter tip percent" })
+            </div>
+            <div class="form-group">
+                <label for="TotalCost">Total Cost</label>
+                @Html.TextBoxFor(m => m.TotalCost, new { @class = "form-control", placeholder = "Enter tip percent" })
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-default">Re-Submit</button>
+                </div>
+                <div class="col-sm-6">
+                   <h5> @Html.ActionLink("Back to App Labs", "Index")</h5>
+                </div>
+            </div>
+        }
+    </div>
+</div>

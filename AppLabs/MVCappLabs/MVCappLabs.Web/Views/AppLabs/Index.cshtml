@@ -1,0 +1,289 @@
+﻿@using System.Activities.Expressions
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 align="center" style="margin-top: 15px; margin-bottom: 30px">App Labs</h1>
+<div class="container" align="center">
+    <div class=" row" style="margin-bottom: 30px">
+        <div class="col-sm-3">
+            <div class="col-sm-6">
+                <h3 style="background-color:antiquewhite" >
+                    <a href="#" onmouseover="toggle_visibility('level1');" onclick="toggle_visibility('level1');" id="blackLink">Level 1</a>
+                    @*@Html.ActionLink("Level 1", "LevelOne", "LevelOne",null,new{@style="color:black"})*@
+                </h3>
+            </div>
+            
+            <div class="col-sm-6">
+                <h3 style="background-color:powderblue">
+                    @*@Html.ActionLink("Level 2", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level2');" onclick="toggle_visibility('level2');" id="blackLink">Level 2</a>
+            </h3>
+            </div>
+
+        </div>
+        
+        <div class="col-sm-3">
+            <div class="col-sm-6">
+                <h3 style="background-color:lavender">
+                    @*@Html.ActionLink("Level 3", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level3');" onclick="toggle_visibility('level3');" id="blackLink">Level 3</a>
+
+            </h3>
+            </div>
+
+            <div class="col-sm-6">
+                <h3 style="background-color:lightgrey">
+                    @*@Html.ActionLink("Level 4", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level4');" onclick="toggle_visibility('level4');" id="blackLink">Level 4</a>
+
+                </h3>
+            </div>
+
+        </div>
+        
+        
+        <div class="col-sm-3">
+            <div class="col-sm-6">
+                <h3 style="background-color:palegoldenrod">
+                    @*@Html.ActionLink("Level 5", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level5');" onclick="toggle_visibility('level5');" id="blackLink">Level 5</a>
+
+
+            </h3>
+            </div>
+
+            <div class="col-sm-6">
+                <h3 style="background-color:lightcyan">
+                    @*@Html.ActionLink("Level 6", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level6');" onclick="toggle_visibility('level6');" id="blackLink">Level 6</a>
+
+            </h3>
+            </div>
+
+        </div>
+        
+        
+        <div class="col-sm-3">
+            <div class="col-sm-6">
+                <h3 style="background-color:mistyrose">
+                    @*@Html.ActionLink("Level 7", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level7');" onclick="toggle_visibility('level7');" id="blackLink">Level 7</a>
+
+            </h3>
+            </div>
+
+            <div class="col-sm-6">
+                <h3 style="background-color:lightgreen">
+                    @*@Html.ActionLink("Level 8", "LevelTwo", "LevelTwo", null, new { @style = "color:black" })*@
+                    <a href="#" onmouseover="toggle_visibility('level8');" onclick="toggle_visibility('level8');" id="blackLink">Level 8</a>
+
+            </h3>
+            </div>
+
+        </div>
+      
+
+    </div>
+</div>
+
+
+    <div class="jumbotron" style="background-color: antiquewhite" id="level1">
+        <h1>Level One Labs</h1>
+        <p>These are simple labs designed to introduce basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-3">
+                <p>@Html.ActionLink("Tip Calculator", "TipCalculator", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-3">
+                <p>@Html.ActionLink("Flooring Calculator", "FlooringCalculator", "AppLabs", new { @class = "btn btn-warning btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-3">
+                <p>@Html.ActionLink("Leap Years", "LeapYears", "AppLabs", new { @class = "btn btn-success btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-3">
+                <p>@Html.ActionLink("Reversing A String", "ReversingAString", "AppLabs", new { @class = "btn btn-info btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="jumbotron" style="display:none" id="level2">
+        <h1>Level Two Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Character Count", "CharacterCount", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Palindromes", "Palindromes", "AppLabs", new { @class = "btn btn-warning btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Make Change", "MakeChange", "AppLabs", new { @class = "btn btn-success btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Fibonacci", "Fibonacci", "AppLabs", new { @class = "btn btn-info btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Next Prime", "NextPrime", "AppLabs", new { @class = "btn btn-danger btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Unit Converter", "Unit Converter", "AppLabs", new { @class = "btn btn-default btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron" style="background-color:lavender" id="level3">
+        <h1>Level Three Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-4">
+                <p>@Html.ActionLink("Alarm Clock", "AlarmClock", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-4">
+                <p>@Html.ActionLink("Common Denominators", "CommonDenominators", "AppLabs", new { @class = "btn btn-warning btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-4">
+                <p>@Html.ActionLink("Word Counting", "WordCounting", "AppLabs", new { @class = "btn btn-success btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron" style="background-color:lightgrey" id="level4">
+        <h1>Level Four Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("MorseCode", "MorseCode", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2" style="margin-right: 20px">
+                <p>@Html.ActionLink("Numbers/Words", "NumbersToWords", "AppLabs", new { @class = "btn btn-warning btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2" style="margin-right: 20px">
+                <p>@Html.ActionLink("Binary Converter", "BinaryConverter", "AppLabs", new { @class = "btn btn-success btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2" style="margin-right: 20px">
+                <p>@Html.ActionLink("Roman Numerals", "RomanNumerals", "AppLabs", new { @class = "btn btn-info btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-2">
+                <p>@Html.ActionLink("Pascal's Triangle", "PascalsTriangle", "AppLabs", new { @class = "btn btn-danger btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron" style="background-color:palegoldenrod" id="level5">
+        <h1>Level Five Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-4">
+                <p>@Html.ActionLink("Fractions", "Fractions", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-4">
+                <p>@Html.ActionLink("Mortgage Calculator", "MortgageCalculator", "AppLabs", new { @class = "btn btn-warning btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-4">
+                <p>@Html.ActionLink("Ciphers", "Ciphers", "AppLabs", new { @class = "btn btn-success btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron" style="background-color:lightcyan" id="level6">
+        <h1>Level Six Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-6">
+                <p>@Html.ActionLink("HTML Generator", "HTMLGenerator", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+            <div class="col-sm-6">
+                <p>@Html.ActionLink("Credit Card Validator", "CreditCardValidator", "AppLabs", new { @class = "btn btn-warning btn-lg" })</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron" style="background-color:mistyrose" id="level7">
+        <h1>Level Seven Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-12">
+                <p>@Html.ActionLink("Recreate Grep", "RecreateGrep", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="jumbotron" style="background-color:lightgreen" id="level8">
+        <h1>Level Eight Labs</h1>
+        <p>These labs provide further practice in basic C# concepts:</p>
+        <div class=" row">
+
+            <div class="col-sm-12">
+                <p>@Html.ActionLink("Quote Tracker", "QuoteTracker", "AppLabs", new { @class = "btn btn-primary btn-lg" })</p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+<script>
+    function toggle_visibility(id) {
+      //  $(".jumbotron").show();
+        $("#" + id).show();
+
+        hideAllBut(id);
+    }
+
+    function hideAllBut(id) {
+        var jumbotrons = document.querySelectorAll('.jumbotron');
+        for (var i = jumbotrons.length; i--;) {
+            if (jumbotrons[i].id != id) {
+                jumbotrons[i].style.display = 'none';
+            }
+        }
+    }
+
+
+
+    //function ShowOnlyOne(theChosenOne) {
+    //    $('jumbotron').each(function(index) {
+    //        if ($(index).attr("id") == theChosenOne) {
+    //            $(this).show();
+    //        } else {
+    //            $(this).hide();
+    //        }
+    //    });
+    //}
+</script>
