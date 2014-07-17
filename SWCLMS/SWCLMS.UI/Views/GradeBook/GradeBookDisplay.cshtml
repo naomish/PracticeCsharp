@@ -1,0 +1,148 @@
+﻿@using SWCLMS.Models
+@using SWCLMS.UI.Models.GradeBook
+@model SWCLMS.UI.Models.GradeBook.GradeBook
+
+@{
+    ViewBag.Title = "GradeBookDisplay";
+}
+
+<h2>@Model.Course.Name - Gradebook</h2>
+
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Class Schedule", "Index", "Teacher")</li>
+    <li>@Html.ActionLink("Information", "DisplayCourseInfo", "Teacher", new { id = Model.Course.ClassId }, null)</li>
+    <li>@Html.ActionLink("Roster", "ClassRoster", "Teacher", new { id = Model.Course.ClassId  }, null)</li>
+    <li class="active">@Html.ActionLink("Gradebook", "GradeBookDisplay", "GradeBook", new { id = Model.Course.ClassId }, null)</li>
+</ul>
+<br />
+
+<div class ="row">
+    <div class ="col-sm-3">
+        @Html.ActionLink("Add Assignment", "AddAssignment", "GradeBook", new{id=Model.Course.ClassId}, new{@class="btn btn-warning"})
+    </div>
+</div>
+@*Note about debugging javascript/angular: f12 lets you see errors on page that is running.  to see if your data has arrived:
+    Grab stub from URL of page you are working example: localhost:49338 add Api + name of APIController + id
+    for the calculus gradebook page of the LMS project it would be: http://localhost:49338/Api/Gradebookdata/3 *@
+<div ng-app="GradeBookModule" ng-controller="GradeBookCtrl">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Grade</th>
+                @foreach (var assignment in Model.AssignmentList)
+                {
+                    <th class="activeClick" ng-click="gotoAssignment('@Url.Action("EditAssignment","GradeBook", new{id=assignment.AssignmentId})')">@assignment.Name</th> 
+                }
+                
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var student in Model.StudentPerformances)*@
+            <tr ng-repeat="student in gradebook.StudentPerformances">
+                <td>{{student.FirstName}}</td>
+                 <td>{{student.LastName}}</td>
+                 <td>{{student.CumulativeGrade}}</td>
+           
+            @*@foreach (var score in student.StudentGrades)*@
+            
+                <td ng-controller="ItemCtrl" ng-repeat="score in student.StudentGrades" ng-init="score=score;">
+                    <span ng-click="showForm()" ng-hide="editMode">
+                        {{score.Score}}
+                        <i ng-show="score.Points ==null" class="glyphicon glyphicon-pencil"></i>
+                    </span>
+                    
+                    <div ng-show="editMode">
+                        <input ng-model ="score.Points"/>/
+                        {{score.PossiblePoints}}
+                        <button ng-click ="save(score.AssignmentId,score.RosterId,score.Points,score.PossiblePoints);">Save</button>
+                    </div>
+
+                </td>
+            
+             </tr> 
+            
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script>
+        var gradebook = angular.module('GradeBookModule', []);
+
+        gradebook.factory('gradebookFactory', function($http) {
+                var result = {};
+                var url = '/api/gradebookData/'; //not sure if this works for my routing
+                var classId = '@ViewContext.RouteData.Values["id"]';  //
+
+                result.getGradebookInfo = function() {
+                    return $http.get(url + classId);
+                };
+
+            result.postAssignmentScore = function(editInfo) {
+                return $http.post(url, editInfo);
+            };
+
+                return result;
+            } );
+
+
+        gradebook.controller('ItemCtrl', function($scope, gradebookFactory) {
+            $scope.editMode = false;
+
+            $scope.showForm = function() {
+                $scope.editMode = true;
+            }
+
+            $scope.save = function(assignmentId, rosterId, points, possiblePoints) {
+                var editInfo = {
+                    AssignmentId: assignmentId,
+                    RosterId: rosterId,
+                    Points: points,
+                    Score: points / possiblePoints *100
+                };
+
+                gradebookFactory.postAssignmentScore(editInfo)
+                    .success(function() {
+                        //toastr.info('Score Updated');
+                        $scope.$emit('updateGradebook');
+                    })
+                    .error(function(message, status) {
+                        alert(status + ':' + message); //toastr.error(message + 'Not able to save' + status);
+                    });
+                $scope.editMode = false;
+
+            }
+
+        });
+
+        gradebook.controller('GradeBookCtrl', function ($scope, gradebookFactory) {
+
+            $scope.refreshGradebook = function() {
+                gradebookFactory.getGradebookInfo().success(function(data) {
+                        $scope.gradebook = data;
+                    })
+                    .error(function(message, status) {
+                        alert(status + ':' + message);
+                    });
+            };
+
+            $scope.refreshGradebook();
+
+            $scope.$on('updateGradebook', function() {  //this here is what updates the row "client side" without pulling from the Server/DB
+                $scope.refreshGradebook();
+            });
+
+            $scope.gotoAssignment = function(url)
+            {
+                window.location = url;
+            };
+
+        });
+    </script>
+    
+    
+}

@@ -1,0 +1,116 @@
+﻿@model SWCLMS.UI.Models.Teacher.UberRoster
+
+@{
+    ViewBag.Title = "ClassRoster";
+}
+
+<h2>@Model.CourseName</h2>
+
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Class Schedule", "Index", "Teacher")</li>
+    <li>@Html.ActionLink("Information", "DisplayCourseInfo", "Teacher", new { id = Model.ClassId }, null)</li>
+    <li class="active">@Html.ActionLink("Roster", "ClassRoster", "Teacher", new { id = Model.ClassId }, null)</li>
+    <li>@Html.ActionLink("Gradebook","GradeBookDisplay", "GradeBook", new {id = Model.ClassId}, null)</li>
+</ul>
+<br />
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Roster</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var student in Model.EnrolledStudents)
+                {
+                    <tr>
+                        <td>@student.FirstName</td>
+                        <td>@student.LastName</td>
+                        <td>@student.UserName</td>
+                        <td>
+                            @using (Html.BeginForm("DeleteStudent", "Teacher", new {rosterId = student.RosterId, classId=Model.ClassId}))
+                            {
+                                @Html.Hidden("RosterId", student.RosterId)
+                                @Html.Hidden("ClassId", Model.ClassId)
+      
+                                <button class="btn btn-danger">Delete</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row">
+            <h4>Search</h4>
+            @using (Html.BeginForm("Search", "Teacher", FormMethod.Post, new {role = "form", @class = "form-inline", style = "margin-bottom: 15px"}))
+            {
+                @Html.ValidationSummary(true)
+                @Html.Hidden("ClassId", Model.ClassId)
+                
+                <div class = "form-group">
+                    <label class="sr-only">Last Name</label>
+                    @Html.TextBox("LastName", @Model.SearchRequest.LastName, new  { @class="form-control", placeholder="Last Name"})
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Grade Level</label>
+                    @Html.DropDownList("GradeLevel", new List<SelectListItem>()
+                    {
+                    new SelectListItem(){Text="1", Value="1"},
+                    new SelectListItem(){Text="2", Value="2"},
+                    new SelectListItem(){Text="3", Value="3"},
+                    new SelectListItem(){Text="4", Value="4"},
+                    new SelectListItem(){Text="5", Value="5"},
+                    new SelectListItem(){Text="6", Value="6"},
+                    new SelectListItem(){Text="7", Value="7"},
+                    new SelectListItem(){Text="8", Value="8"},
+                    new SelectListItem(){Text="9", Value="9"},
+                    new SelectListItem(){Text="10", Value="10"},
+                    new SelectListItem(){Text="11", Value="11"},
+                    new SelectListItem(){Text="12", Value="12"},
+                    },
+                    "-SELECT GRADE-", new {@class = "form-control"})
+                </div>
+                <input type ="submit" value="Search" class="btn btn-primary col-sm-offset-2"/>
+            }
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model.SearchResults)
+                    {
+                        <tr>
+                            <td>@result.FirstName</td>
+                            <td>@result.LastName</td>
+                            <td>
+                                @using (Html.BeginForm("AddStudent", "Teacher"))
+                                {
+                                    @Html.Hidden("UserId", result.UserId)
+                                    @Html.Hidden("ClassId", Model.ClassId)
+                                    @*@Html.Hidden("RosterId", Model.AddRequest.RosterId)*@
+                                    
+                                    <button class="glyphicon glyphicon-plus"></button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+</div>
+</div>

@@ -1,0 +1,80 @@
+﻿@using SWCLMS.Models.Views
+@model IEnumerable<SWCLMS.Models.Views.CourseSummaryView>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Teacher Dashboard</h2>
+@*<ul class="nav nav-pills">
+    <li class="active">@Html.ActionLink("Class Schedule", "Index", "Teacher")</li>
+    <li><a href="#">@Html.ActionLink("Roster", "ClassRoster", "Teacher")</a></li>
+    <li><a href="#">Gradebook</a></li>
+</ul>*@
+<br />
+<br />
+<h4>My Classes</h4>
+<div class="row" ng-app="SummaryModule">
+    <div class="col-sm-12">
+        <fieldset ng-controller="SummaryCtrl">
+            <div class="row">
+                <div class="col-sm-3">
+                    @Html.ActionLink("Add Course", "AddCourse", "Teacher", new { @class = "btn btn-warning" })
+                </div>
+                <div class="col-sm-5">
+
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn" ng-class="{'btn-warning': currentSelected}" ng-click="selectCurrent(true)">Current (@Model.Count(c => !c.IsArchived))</button>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn" ng-class="{'btn-primary': !currentSelected}" ng-click="selectCurrent(false)">Archived(@Model.Count(c => c.IsArchived))</button>
+                </div>
+            </div>
+            <br />
+            <table class="table" ng-show="currentSelected">
+                <tbody>
+                    @foreach (var summary in Model.Where(s => !s.IsArchived))
+                    {
+                        <tr class="activeClick" ng-click="gotoClass('@Url.Action("DisplayCourseInfo", "Teacher", new{id = summary.ClassId})')"> 
+                            <td>@summary.Name</td>
+                            <td>@summary.NumberOfStudents students</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <table class="table" ng-hide="currentSelected">
+                <tbody>
+                    @foreach (var summary in Model.Where(s => s.IsArchived))
+                    {
+                        <tr ng-click="gotoClass('@Url.Action("EditCourse", "Teacher", new{id = summary.ClassId})')">
+                            <td>@summary.Name</td>
+                            <td>@summary.NumberOfStudents students</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script>
+        var summary = angular.module('SummaryModule', []);
+
+        summary.controller('SummaryCtrl', function ($scope) {
+            $scope.currentSelected = true;
+
+            $scope.selectCurrent = function (value) {
+                $scope.currentSelected = value;
+            };
+
+            $scope.gotoClass = function (url) {
+                window.location = url;
+            };
+
+          
+        });
+    </script>
+}

@@ -1,0 +1,80 @@
+﻿@model SWCLMS.UI.Models.GradeBook.AssignmentView
+
+@{
+    ViewBag.Title = "EditAssignment";
+}
+
+<h2>@Model.ClassName</h2>
+
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Class Schedule", "Index", "Teacher")</li>
+    <li>@Html.ActionLink("Information", "DisplayCourseInfo", "Teacher", new { id = Model.NewAssignment.ClassId }, null)</li>
+    <li>@Html.ActionLink("Roster", "ClassRoster", "Teacher", new { id = Model.NewAssignment.ClassId }, null)</li>
+    <li>@Html.ActionLink("Gradebook", "GradeBookDisplay", "GradeBook", new { id = Model.NewAssignment.ClassId }, null)</li>
+</ul>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Edit Assignment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        
+        @Html.HiddenFor(model => model.NewAssignment.ClassId)
+        @Html.HiddenFor(model => model.ClassName)
+        @Html.HiddenFor(model=>model.NewAssignment.AssignmentId)
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewAssignment.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewAssignment.Name)
+                @Html.ValidationMessageFor(model => model.NewAssignment.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewAssignment.PossiblePoints, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewAssignment.PossiblePoints)
+                @Html.ValidationMessageFor(model => model.NewAssignment.PossiblePoints)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewAssignment.DueDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewAssignment.DueDate)
+                @Html.ValidationMessageFor(model => model.NewAssignment.DueDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewAssignment.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.NewAssignment.Description)
+                @Html.ValidationMessageFor(model => model.NewAssignment.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm( "DeleteAssignment","GradeBook", new {id = Model.NewAssignment.AssignmentId}))
+{
+    @Html.Hidden("AssignmentId", Model.NewAssignment.AssignmentId)
+    <button class="btn btn-danger">Delete</button>
+}
+
+<div>
+    @Html.ActionLink("Back to Grade Book", "GradeBookDisplay", "GradeBook", new{classId=Model.NewAssignment.ClassId},null)
+</div>
