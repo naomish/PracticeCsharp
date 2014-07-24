@@ -4,5 +4,18 @@
     ViewBag.Title = "VendingMachine";
 }
 
-<h2>VendingMachine</h2>
+<h2>Vending Machine</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        @using (Html.BeginForm("VendingMachine", "AppLabs", FormMethod.Post, new {role = "form"}))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label for="VendingItems">Items</label>
+                @Html.DropDownListFor(m=>m.Items, new SelectList (Model.Items,"Name","Price"))
+            </div>
+        }
+    </div>
+</div>
 

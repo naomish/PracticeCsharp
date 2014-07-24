@@ -148,6 +148,10 @@
       <Project>{4090082f-28c6-4c33-ae50-f19f1e6f291f}</Project>
       <Name>MVCappLabs.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MVCappLabs.DAL\MVCappLabs.DAL.csproj">
+      <Project>{c17bfa4f-0631-4287-a962-0ec6700712ba}</Project>
+      <Name>MVCappLabs.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MVCappLabs.Models\MVCappLabs.Models.csproj">
       <Project>{0409c514-0e6c-436a-af78-ff8684254654}</Project>
       <Name>MVCappLabs.Models</Name>

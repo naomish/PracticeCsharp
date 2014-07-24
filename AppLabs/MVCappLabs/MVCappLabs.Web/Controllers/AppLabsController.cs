@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MVCappLabs.BLL.Level1;
 using MVCappLabs.BLL.Level2;
+using MVCappLabs.DAL;
 using MVCappLabs.Models.Level1;
 using MVCappLabs.Models.Level2;
 using MVCappLabs.Web.Models.AppLabs;
@@ -243,6 +244,8 @@ namespace MVCappLabs.Web.Controllers
         public ActionResult VendingMachine()
         {
             var model = new VendingTool();
+            var vr = new VendingRepository();
+            model.Items = vr.LoadItemsFromFile();
             return View(model);
         }
 	}

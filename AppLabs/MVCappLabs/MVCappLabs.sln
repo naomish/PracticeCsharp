@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCappLabs.BLL", "MVCappLab
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCappLabs.Tests", "MVCappLabs.Tests\MVCappLabs.Tests.csproj", "{C45233EC-3092-4B6D-BB24-B95AED6EF5A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCappLabs.DAL", "MVCappLabs.DAL\MVCappLabs.DAL.csproj", "{C17BFA4F-0631-4287-A962-0EC6700712BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C45233EC-3092-4B6D-BB24-B95AED6EF5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C45233EC-3092-4B6D-BB24-B95AED6EF5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C45233EC-3092-4B6D-BB24-B95AED6EF5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17BFA4F-0631-4287-A962-0EC6700712BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17BFA4F-0631-4287-A962-0EC6700712BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17BFA4F-0631-4287-A962-0EC6700712BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17BFA4F-0631-4287-A962-0EC6700712BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

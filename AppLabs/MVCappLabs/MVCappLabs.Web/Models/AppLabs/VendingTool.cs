@@ -9,5 +9,9 @@ namespace MVCappLabs.Web.Models.AppLabs
     public class VendingTool
     {
         public List<VendingItem> Items { get; set; }
+        public VendingItem Item { get; set; }
+        public decimal Payment { get; set; }
+
+      
     }
 }
