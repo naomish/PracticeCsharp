@@ -118,6 +118,7 @@
     <Compile Include="Models\AppLabs\PrimeSearchTool.cs" />
     <Compile Include="Models\AppLabs\TipCalculatorRequest.cs" />
     <Compile Include="Models\AppLabs\TwoWayString.cs" />
+    <Compile Include="Models\AppLabs\VendingTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\AppLabs\FibonacciTool.cs" />
   </ItemGroup>
@@ -130,6 +131,7 @@
     <Content Include="Views\AppLabs\Palindromes.cshtml" />
     <Content Include="Views\AppLabs\Fibonacci.cshtml" />
     <Content Include="Views\AppLabs\NextPrime.cshtml" />
+    <Content Include="Views\AppLabs\VendingMachine.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

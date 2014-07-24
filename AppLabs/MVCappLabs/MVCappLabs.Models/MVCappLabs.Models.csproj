@@ -44,9 +44,13 @@
     <Compile Include="Level1\StringBothWays.cs" />
     <Compile Include="Level1\TipCalculationRequest.cs" />
     <Compile Include="Level1\TipCalculationResponse.cs" />
+    <Compile Include="Level2\Change.cs" />
+    <Compile Include="Level2\ChangeRequest.cs" />
+    <Compile Include="Level2\ChangeResponse.cs" />
     <Compile Include="Level2\CharacterCounts.cs" />
     <Compile Include="Level2\PalindromeRequest.cs" />
     <Compile Include="Level2\Primer.cs" />
+    <Compile Include="Level2\VendingItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

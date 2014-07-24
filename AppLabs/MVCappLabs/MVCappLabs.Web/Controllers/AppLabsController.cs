@@ -239,6 +239,12 @@ namespace MVCappLabs.Web.Controllers
             }
             return View("NextPrime", number);
         }
+
+        public ActionResult VendingMachine()
+        {
+            var model = new VendingTool();
+            return View(model);
+        }
 	}
 
 }
