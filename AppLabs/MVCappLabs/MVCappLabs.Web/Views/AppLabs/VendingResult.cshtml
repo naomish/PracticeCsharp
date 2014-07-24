@@ -1,0 +1,74 @@
+﻿@model MVCappLabs.Models.Level2.ChangeResponse
+
+@{
+    ViewBag.Title = "VendingResult";
+}
+
+<h2>Vending Result</h2>
+
+<div>
+    <h4>Here is your change!</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChangeOwed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChangeOwed)
+        </dd>
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coins.SilverDollars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coins.SilverDollars)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Coins.Quarters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coins.Quarters)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Coins.Dimes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coins.Dimes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coins.Nickels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coins.Nickels)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coins.Pennies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coins.Pennies)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

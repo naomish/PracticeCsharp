@@ -10,7 +10,7 @@ namespace MVCappLabs.Models.Level2
     {
       public Change Coins { get; set; }
       public VendingItem Item { get; set; } 
-      public int Payment { get; set; }
-      public int ChangeOwed { get; set; }
+      public decimal Payment { get; set; }
+      public decimal ChangeOwed { get; set; }
     }
 }

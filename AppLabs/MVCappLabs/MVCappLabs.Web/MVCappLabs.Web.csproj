@@ -132,6 +132,7 @@
     <Content Include="Views\AppLabs\Fibonacci.cshtml" />
     <Content Include="Views\AppLabs\NextPrime.cshtml" />
     <Content Include="Views\AppLabs\VendingMachine.cshtml" />
+    <Content Include="Views\AppLabs\VendingResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

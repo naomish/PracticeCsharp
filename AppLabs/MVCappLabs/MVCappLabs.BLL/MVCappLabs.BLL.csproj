@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Level2\ChangeMaker.cs" />
     <Compile Include="Level2\CharacterCounter.cs" />
     <Compile Include="Level1\FlooringCalculator.cs" />
     <Compile Include="Level1\LeapYearFinder.cs" />

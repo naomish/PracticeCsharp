@@ -13,7 +13,17 @@
             @Html.ValidationSummary()
             <div class="form-group">
                 <label for="VendingItems">Items</label>
-                @Html.DropDownListFor(m=>m.Items, new SelectList (Model.Items,"Name","Price"))
+                @Html.DropDownListFor(m=>m.Item.Price, new SelectList (Model.Items,"Price","Name"))
+            </div>
+            
+            <div class="form-group">
+                <label for="Payment">Total Payment</label>
+                @Html.TextBoxFor(m=>m.Payment,  new{@class="form-control", placeholder ="Enter in the form of a decimal. No $, commas or spaces."})
+            </div>
+            
+                    <div class="col-sm-9">
+                <div class="col-sm-6"><button type="submit" class="btn btn-default">Submit</button></div>
+                <div class ="col-sm-6"><h5>@Html.ActionLink("Back to App Labs", "Index")</h5></div>
             </div>
         }
     </div>

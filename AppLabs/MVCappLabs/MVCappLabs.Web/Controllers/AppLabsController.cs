@@ -42,11 +42,11 @@ namespace MVCappLabs.Web.Controllers
 
                 var tipData = new MVCappLabs.Models.Level1.TipCalculationRequest();
                 tipData.MealCost = request.MealCost.Value;
-                tipData.TipPercent = request.TipPercent.Value/100;
+                tipData.TipPercent = request.TipPercent.Value / 100;
 
                 var response = calc.CalculateTip(tipData);
                 return View("TipCalculatorResponse", response);
-                    //changed view from TipCalculatorResponse to point back to TipCalculator -oops, can't do that without changing alot
+                //changed view from TipCalculatorResponse to point back to TipCalculator -oops, can't do that without changing alot
             }
             return View("TipCalculator");
         }
@@ -64,7 +64,7 @@ namespace MVCappLabs.Web.Controllers
                 var calc = new FlooringCalculator();
                 var floorData = new FloorCalculation();
                 floorData.Width = inputs.Width.Value;
-                    //what does .Value do here?  allows nullabe decimal to convert to target type decimal?
+                //what does .Value do here?  allows nullabe decimal to convert to target type decimal?
                 floorData.Length = inputs.Length.Value;
                 floorData.CostPerUnit = inputs.CostPerUnit.Value;
 
@@ -92,7 +92,7 @@ namespace MVCappLabs.Web.Controllers
         {
             if (ModelState.IsValidField("EndYear") && searchTool.StartYear >= searchTool.EndYear)
             {
-               ModelState.AddModelError("EndYear", "Please make sure your end date is later than your start date");
+                ModelState.AddModelError("EndYear", "Please make sure your end date is later than your start date");
             }
             if (ModelState.IsValid)
             {
@@ -110,8 +110,9 @@ namespace MVCappLabs.Web.Controllers
 
             }
             else
-            {searchTool.Years= new List<int>(); //not sure why this is necessary but I get null ref exception on View without it.
-               
+            {
+                searchTool.Years = new List<int>(); //not sure why this is necessary but I get null ref exception on View without it.
+
                 return View("LeapYears", searchTool);
             }
         }
@@ -125,23 +126,23 @@ namespace MVCappLabs.Web.Controllers
         [HttpPost]
         public ActionResult ReversingAString(TwoWayString stringModel)
         {
-           
+
 
             if (ModelState.IsValid)
             {
                 var reverser = new StringReverser();
                 var text = new StringBothWays();
                 text.Original = stringModel.Forward;
-               text = reverser.ReverseString(text);
-              stringModel.Reversed=  text.Backwards;
+                text = reverser.ReverseString(text);
+                stringModel.Reversed = text.Backwards;
                 return View("ReversingAString", stringModel);
 
             }
-           
-                return View("ReversingAString");           
+
+            return View("ReversingAString");
         }
 
-       //*************Level 2 Labs***************
+        //*************Level 2 Labs***************
         public ActionResult CharacterCount()
         {
             var model = new CharacterCountTool();
@@ -211,19 +212,19 @@ namespace MVCappLabs.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                 var generator = new FibonacciGenerator();
-            var fibonacciList = generator.FindFibs(ft.NumberOfFibs.Value);
-            ft.FibonacciList = fibonacciList;
+                var generator = new FibonacciGenerator();
+                var fibonacciList = generator.FindFibs(ft.NumberOfFibs.Value);
+                ft.FibonacciList = fibonacciList;
                 return View("Fibonacci", ft);
             }
             ft.FibonacciList = new List<ulong>();
-            return View("Fibonacci",ft);
+            return View("Fibonacci", ft);
         }
 
         public ActionResult NextPrime()
         {
             var model = new PrimeSearchTool();
-          return  View(model);
+            return View(model);
         }
 
         [HttpPost]
@@ -234,7 +235,7 @@ namespace MVCappLabs.Web.Controllers
                 var primeFinder = new PrimeFinder();
                 var primer = new Primer();
                 primer.StartNumber = number.FirstNumber.Value;
-              primer=  primeFinder.FindPrime(primer);
+                primer = primeFinder.FindPrime(primer);
                 number.NextPrime = primer.PrimeNumber;
                 return View("NextPrime", number);
             }
@@ -245,9 +246,46 @@ namespace MVCappLabs.Web.Controllers
         {
             var model = new VendingTool();
             var vr = new VendingRepository();
-            model.Items = vr.LoadItemsFromFile();
+         //   model.Items = vr.LoadItemsFromFile(); since I can't get my filereader to find my txt file, I'm filling a dummy list
+            var itemList = new List<VendingItem> //Hard coded until I can figure out how to get filereader to find my txt file.
+            {
+                new VendingItem() {Name = "Starburst - $1.25", Price = 1.25M},
+                new VendingItem() {Name = "French Fries - $2.05", Price = 2.05M},
+                new VendingItem() {Name = "Butterfingers - $1.25", Price = 1.25M},
+                new VendingItem() {Name = "Puppy - $0.89", Price = .89M}
+
+            };
+            model.Items = itemList;
             return View(model);
         }
-	}
+
+        [HttpPost]
+        public ActionResult VendingMachine(VendingTool model)
+        {
+            if (ModelState.IsValid)
+            {//need to add validation for insufficient funds
+               
+                var request = new ChangeRequest();
+                request.Payment = (int)(model.Payment.Value*100);
+                request.Price = (int)(model.Item.Price*100);
+                request.ChangeOwed =request.Payment-request.Price;
+                var cm = new ChangeMaker();
+              var response=  cm.MakeChange(request);
+                return View("VendingResult", response);
+            }
+
+            var itemList = new List<VendingItem> //Hard coded until I can figure out how to get filereader to find my txt file.
+            {
+                new VendingItem() {Name = "Starburst - $1.25", Price = 1.25M},
+                new VendingItem() {Name = "French Fries - $2.05", Price = 2.05M},
+                new VendingItem() {Name = "Butterfingers - $1.25", Price = 1.35M},
+                new VendingItem() {Name = "Puppy - $0.89", Price = .89M}
+
+            };
+            model.Items = itemList;
+
+            return View("VendingMachine", model);
+        }
+    }
 
 }
