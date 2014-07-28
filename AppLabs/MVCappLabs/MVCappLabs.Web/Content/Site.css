@@ -6,6 +6,21 @@
 width: 12.5%;
 }
 
+/*img.align-left { float: left;}
+
+p.background { background-image: url("/Content/images/eh_house_image3.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left;
+}*/
+
+div.boxed{ border-color: black;
+    border-width: 2px;
+}
+p.border{ border-color: black;
+    border-width: medium;
+}
+
 /* Styles for validation helpers*/
 
 .field-validation-error{color:#f00}

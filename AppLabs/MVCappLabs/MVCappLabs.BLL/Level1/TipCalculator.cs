@@ -17,7 +17,9 @@ namespace MVCappLabs.BLL.Level1
           response.MealCost = request.MealCost;
           response.TipAmount = response.TipPercent*response.MealCost;
           response.TotalCost = response.MealCost + response.TipAmount;
-         
+
+          response.TipAmount = Math.Round(response.TipAmount, 2); //limits response to two decimal places for currency
+          response.TotalCost = Math.Round(response.TotalCost, 2);
           return response;
       }
     }

@@ -45,8 +45,9 @@ namespace MVCappLabs.Web.Controllers
                 tipData.TipPercent = request.TipPercent.Value / 100;
 
                 var response = calc.CalculateTip(tipData);
+                
                 return View("TipCalculatorResponse", response);
-                //changed view from TipCalculatorResponse to point back to TipCalculator -oops, can't do that without changing alot
+             
             }
             return View("TipCalculator");
         }
