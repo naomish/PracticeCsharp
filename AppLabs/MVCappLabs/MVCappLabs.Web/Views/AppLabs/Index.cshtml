@@ -113,7 +113,7 @@
 </div>
 
 
-<div class="jumbotron" style="display:none" id="level2">
+<div class="jumbotron" style="background-color: powderblue" id="level2">
     <h1>Level Two Labs</h1>
     <p>These labs provide further practice in basic C# concepts:</p>
     <div class=" row">
@@ -269,13 +269,13 @@
 
 <script>
     function toggle_visibility(id) {
-        //  $(".jumbotron").show();
-        $("#" + id).show();
-
-        hideAllBut(id);
+        
+        $("#" + id).show();       
+            hideAllBut(id);       
     }
 
     function hideAllBut(id) {
+
         var jumbotrons = document.querySelectorAll('.jumbotron');
         for (var i = jumbotrons.length; i--;) {
             if (jumbotrons[i].id != id) {
@@ -283,16 +283,4 @@
             }
         }
     }
-
-
-
-    //function ShowOnlyOne(theChosenOne) {
-    //    $('jumbotron').each(function(index) {
-    //        if ($(index).attr("id") == theChosenOne) {
-    //            $(this).show();
-    //        } else {
-    //            $(this).hide();
-    //        }
-    //    });
-    //}
 </script>
