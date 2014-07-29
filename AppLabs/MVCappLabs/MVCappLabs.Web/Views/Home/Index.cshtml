@@ -2,6 +2,8 @@
     ViewBag.Title = "Developer Portfolio";
 }
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=3.0.1"></script>
+<script type="text/javascript" src="js/infinite-rotator.js"></script>
 
 <div class="col-sm-12">
     <h1>Welcome to my developer dump!  </h1>
@@ -19,30 +21,141 @@
     <hr />
 </div>
 
-<div class="col-sm-12" style="top:20px">
+<div class="col-sm-12" style="top:30px;">
     <div class="row">
-        <div class="col-sm-6">
-            <div style="position:relative; background: url(/Content/images/petProject.png); width:650px; height: 143px;top:15px">
+        <div class="col-sm-6" id="smallbox1">
 
-                <div style="position:absolute; top:1px; left:0">
-                    <p>pet project:</p>
-                <p>for now, it's this page of my portfolio. Come back for updates.</p></div>
+            <div style="position:relative; background: url(/Content/images/petProject.png); width:570px; height: 143px;top:1px;right:5px;"  id="image1">
+
+                <div style="position:absolute; top:1px; left:0;">
+                    <p><h4>pet project:</h4></p>
+                    <p>for now, you're looking at it. Come back for updates.</p>
+                </div>
+              
             </div>
+            <div style="position:relative; bottom:19px; right:25px;"><hr /></div> @*may take this rule line out - unsure. matter of visual taste. *@
+
         </div>
-        <div class="col-sm-6">
-            <div class="boxed">
-                <div style="position:relative; left:0; background: url(/Content/images/eh_house_image3.png); width:576px; height: 324px">
-                    <div style="position: absolute; top: 15px; right: 0;" class="col-sm-6"><p> ennui house - for now it's just a blog</p> <p>posts rotating on carosel, or most recent. not sure</p> </div>
+        <div class="col-sm-6" id="smallbox2">
+            @*eventually use javascript to cycle through array of blog posts put styling for link/post in css*@
+            <div style="position:relative; left:0; right:5px; background: url(/Content/images/eh_house_image4.png); width:550px; height: 163px" id="image2">
+                <div style="position: absolute; top: 5px; right: 5px;" class="col-sm-7">
+                    <p> <h4>ennui house: featured blog post</h4></p>
+                    <p>
+                        <a href="http://ennuihouse.com/2013/10/31/thank-eisenstein/">
+                            Thank Eisenstein - <em>October 31, 2013</em>
+                    <p style="font-size:12px;">You know that part in Rocky where he is downing raw eggs, and doing push ups,  and running up the steps to the Philadelphia Museum of Art? </p>
+                    </a></p>
                 </div>
             </div>
+
         </div>
 
 
     </div>
+    <br /><br />
     <div class="row">
-        <div class="jumbotron" style="background-color: darkgray" id="CodeSnips">
+        <h4>code snippets:</h4>
+        <div class="jumbotron" style="background-color: darkgray;" id="CodeSnips">
+            <div class="row">
+                <div id="snipsWrapper">
+                    <div class="snips" id="snip1">
+                        <a href="http://naomihoyt.azurewebsites.net/AppLabs"></a>
+                        <pre><code>&lt;script&gt;
+                    function toggle_visibility(id) {
+                        $("#" + id).show();
+                        hideAllBut(id);
+                    }
+                    function hideAllBut(id) {
+                        var jumbotrons = document.querySelectorAll('.jumbotron');
+                        for (var i = jumbotrons.length; i--;) {
+                            if (jumbotrons[i].id != id) {
+                                jumbotrons[i].style.display = 'none';
+                            }
+                        }
+                    }
+&lt;/script&gt;</code></pre>
+                    </div>
 
-            <p class="border">This is where snippets are going to go. maybe a clickable rotation.</p>
+                    <div class="snips" id="snip2">
+                        <a href="http://naomihoyt.azurewebsites.net/AppLabs/LeapYears"></a>
+                        <pre><code>
+                                     [HttpPost]
+        public ActionResult LeapYears(LeapYearSearchTool searchTool)
+        {
+            if (ModelState.IsValidField("EndYear") && searchTool.StartYear >= searchTool.EndYear)
+            {
+                ModelState.AddModelError("EndYear", "Please make sure your end date is later than your start date");
+            }
+            if (ModelState.IsValid)
+            {
+                var leapFinder = new LeapYearFinder();
+                var leapYears = new LeapYears();
+                leapYears.StartYear = searchTool.StartYear.Value;
+                leapYears.EndYear = searchTool.EndYear.Value;
+                var result = leapFinder.SearchForLeapYears(leapYears);
+                searchTool.Years = result.Years;
+                searchTool.IsPostback = true;
+                return View("LeapYears", searchTool);
+            }
+            else
+            {
+                searchTool.Years = new List<int>(); 
+                return View("LeapYears", searchTool);
+            }
+        }
+</code></pre>
+                    </div>
+
+                    <div class="snips" id="snip3">
+                        <a href="https://github.com/naomish/PracticeCsharp/blob/master/SWCLMS/SWCLMS.Data/GradeBookRepository.cs"></a>
+                        <pre><code>
+            procedure [dbo].[GradeCurrent_GetByRosterId] ( 
+&#64;RosterId int) as
+select r.rosterId, (sum(cast(g.points as decimal))/sum(cast(a.PossiblePoints as decimal))) as CurrentGrade
+from roster r
+inner join AspNetUsers u on  u.id = r.userId
+inner join assignment a on a.ClassId = r.ClassId
+inner join class c on c.ClassId = a.ClassId
+left join grade g on g.AssignmentId = a.AssignmentId and g.RosterId = r.RosterId
+where &#64;RosterId =r.rosterid and r.IsDeleted=0 and g.points is not null
+group by r.rosterId
+</code></pre>
+                    </div>
+
+                </div>
             </div>
         </div>
+    </div>
 </div>
+@*I repurposed (i.e.ripped off) this code from a guy named Brian McNitt:
+     http://trendmedia.com/news/infinite-rotating-images-using-jquery-javascript/   THnaks Brian!*@
+<script>
+    $(window).load(function () {
+        var SnipsRotator =
+        {
+            init: function () {
+                var initialFadeIn = 500;
+                var itemInterval = 7000;
+                var fadeTime = 500;
+                var numberOfItems = $('.snips').length;
+                var currentItem = 0;
+                $('.snips').eq(currentItem).fadeIn(initialFadeIn);
+
+                var infiniteLoop = setInterval(function () {
+                    $('.snips').eq(currentItem).fadeOut(fadeTime);
+
+                    if (currentItem == numberOfItems - 1) {
+                        currentItem = 0;
+                    } else {
+                        currentItem++;
+                    }
+                    $('.snips').eq(currentItem).fadeIn(fadeTime);
+                }, itemInterval);
+
+
+            }
+        };
+        SnipsRotator.init();
+    });
+</script>

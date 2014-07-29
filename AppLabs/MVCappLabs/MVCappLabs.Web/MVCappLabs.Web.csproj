@@ -112,6 +112,7 @@
     <Content Include="Content\images\eh_house_image.jpg" />
     <Content Include="Content\images\eh_house_image2.png" />
     <Content Include="Content\images\eh_house_image3.png" />
+    <Content Include="Content\images\eh_house_image4.png" />
     <Content Include="Content\images\petProject.png" />
     <Content Include="Content\images\SteamShovel.png" />
     <Content Include="Content\images\SteamShovel2.png" />
@@ -144,6 +145,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AppLabsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasteryProjectsController.cs" />
+    <Compile Include="Controllers\ScoreCardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +172,8 @@
     <Content Include="Views\AppLabs\NextPrime.cshtml" />
     <Content Include="Views\AppLabs\VendingMachine.cshtml" />
     <Content Include="Views\AppLabs\VendingResult.cshtml" />
+    <Content Include="Views\ScoreCard\Index.cshtml" />
+    <Content Include="Views\MasteryProjects\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
