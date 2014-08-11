@@ -1,0 +1,7 @@
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\bin\Debug\MVCappLabs.BLL.dll
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\bin\Debug\MVCappLabs.BLL.pdb
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\bin\Debug\MVCappLabs.Models.dll
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\bin\Debug\MVCappLabs.Models.pdb
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\obj\Debug\MVCappLabs.BLL.csprojResolveAssemblyReference.cache
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\obj\Debug\MVCappLabs.BLL.dll
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.BLL\obj\Debug\MVCappLabs.BLL.pdb

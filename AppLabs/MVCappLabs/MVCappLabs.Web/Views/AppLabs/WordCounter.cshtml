@@ -1,0 +1,38 @@
+﻿@model MVCappLabs.Web.Models.AppLabs.WordCountTool
+
+@{
+    ViewBag.Title = "WordCounter";
+}
+
+<h2>Word Count</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-5">Type in some text and I'll count your words</div>
+    </div>
+    <br />
+</div>
+
+<div class="row" style="margin-top:25px">
+    <div class="col-sm-6">
+        @using(Html.BeginForm("WordCounter", "AppLabs", FormMethod.Post, new {role="form"}))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label for="Text">Type Here:</label>
+                @Html.TextAreaFor(m => m.UserInput, new { @class="form-control", placeholder = "Enter some text"})
+            </div>
+            
+            <div class="form-group">
+                <label for="TotalWords">Total Words:</label>
+                @Html.DisplayFor(m=>m.Count)
+            </div>
+            
+                 <div class="col-sm-12" style="margin-top:25px">
+                <div class="col-sm-6" align="center"><button type="submit" class="btn btn-primary">Submit</button></div>
+                <div class="col-sm-4"><h5>@Html.ActionLink("Back to App Labs", "Index")</h5></div>
+            </div>
+        }
+    </div>
+</div>
+

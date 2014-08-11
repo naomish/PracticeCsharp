@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using MVCappLabs.BLL.Level1;
 using MVCappLabs.BLL.Level2;
+using MVCappLabs.BLL.Level3;
 using MVCappLabs.DAL;
 using MVCappLabs.Models.Level1;
 using MVCappLabs.Models.Level2;
+using MVCappLabs.Models.Level3;
 using MVCappLabs.Web.Models.AppLabs;
 using MVCappLabs.Web.Views.AppLabs;
 
@@ -287,6 +289,30 @@ namespace MVCappLabs.Web.Controllers
 
             return View("VendingMachine", model);
         }
+
+        //*************Level 3 Labs***************
+
+        public ActionResult WordCounter()
+        {
+            var model = new WordCountTool();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult WordCounter(WordCountTool model)
+        {
+            if (ModelState.IsValid)
+            {
+                var wc = new WordCount();
+                wc.Input = model.UserInput;
+                var we = new WordEnumerator();
+                model.Count = we.CountWords(wc);
+                return View(model);
+
+            }
+            return View("WordCounter", model);
+        }
+
     }
 
 }

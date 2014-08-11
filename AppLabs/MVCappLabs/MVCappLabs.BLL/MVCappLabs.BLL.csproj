@@ -48,6 +48,7 @@
     <Compile Include="Level2\FibonacciGenerator.cs" />
     <Compile Include="Level2\PalindromeEvaluator.cs" />
     <Compile Include="Level2\PrimeFinder.cs" />
+    <Compile Include="Level3\WordEnumerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,5 @@
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.Models\bin\Debug\MVCappLabs.Models.dll
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.Models\bin\Debug\MVCappLabs.Models.pdb
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.Models\obj\Debug\MVCappLabs.Models.csprojResolveAssemblyReference.cache
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.Models\obj\Debug\MVCappLabs.Models.dll
+C:\github\PracticeCsharp\AppLabs\MVCappLabs\MVCappLabs.Models\obj\Debug\MVCappLabs.Models.pdb
